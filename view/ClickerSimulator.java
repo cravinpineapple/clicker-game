@@ -26,6 +26,7 @@ public class ClickerSimulator {
 	Component spacer = Box.createRigidArea(new Dimension(15, 0));
 	Clicker clicker; // creates clicker class for functionality
 	JLabel walletText = new JLabel();
+	
 
 	public ClickerSimulator(JFrame window) {
 		this.window = window;
