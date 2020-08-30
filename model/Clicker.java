@@ -21,5 +21,25 @@ public class Clicker {
 	void increaseClickPower(int powerIncrease) {
 		clickPower += powerIncrease;
 	}
+
+	double getWallet() {
+		return wallet;
+	}
+
+	double getWalletTotal() {
+		return walletTotal;
+	}
+
+	int getTotalClicks() {
+		return totalClicks;
+	}
+
+	double getMultiplier() {
+		return multiplier;
+	}
+
+	int getClickPower() {
+		return clickPower;
+	}
 	
 }
