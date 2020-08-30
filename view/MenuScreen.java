@@ -39,6 +39,19 @@ public class MenuScreen {
 		southPanel.add(yesButton);
 		southPanel.add(noButton);
 		cp.add(BorderLayout.CENTER, southPanel); // adds panel for buttons to content pane
+
+
+		// changes view to ClickerSimulator if yes button clicked
+		yesButton.addActionListener(e -> {
+			window.getContentPane().removeAll();
+			var clickSim = new ClickerSimulator(window);
+			clickSim.init();
+			window.pack();
+			window.revalidate();
+		});
+
+		// exits program if no button clicked.
+		noButton.addActionListener(e -> System.exit(0));
 	}
 	
 }
