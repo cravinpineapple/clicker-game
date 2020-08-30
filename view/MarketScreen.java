@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import control.MarketClickListener;
 import model.Clicker;
 
 import javax.swing.JLabel;
@@ -18,20 +19,20 @@ public class MarketScreen {
 	private Clicker clicker;
 
 	/* text headers */
-	private JLabel clickPowerHeader = new JLabel("Active Click Income");
-	private JLabel clickPassiveIncomeHeader = new JLabel("Passive Click Income");
+	private JLabel clickPowerHeader = new JLabel("   Active Click Income");
+	private JLabel clickPassiveIncomeHeader = new JLabel("    Passive Click Income");
 
 	/** click power items **/
-	private JButton clickCert = new JButton("Clicking Certification");
-	private JButton clickBS = new JButton("B.S. of Clicking");
-	private JButton clickMS = new JButton("M.S. of Clicking");
-	private JButton clickPHD = new JButton("Ph.D. of Clicking");
+	private JButton clickCertButton = new JButton("<html>Clicking Certification<br/>Price: 30</html>");
+	private JButton clickBSButton = new JButton("<html>B.S. of Clicking<br/>Price: 500</html>");
+	private JButton clickMSButton = new JButton("<html>M.S. of Clicking<br/>Price: 5000</html>");
+	private JButton clickPHDButton = new JButton("<html>Ph.D. of Clicking<br/>Price: 10000</html>");
 
 	/*** auto click items  ***/
-	private JButton clickCat = new JButton("Click Cat"); // well trained nekos dedicated to getting you those clicks!
-	private JButton clickCoinMiner = new JButton("Click-Coin Miner"); // bitcoin? no, clickcoin is the best new cryptocurrency!
-	private JButton clickInc = new JButton("Click Incorporated®"); // you're leading the corporate clicking industry!
-	private JButton clickMutants = new JButton("Click Mutants"); // clicking has become more important than life itself. people offer themselves
+	private JButton clickCatButton = new JButton("<html>Click Cat | Count: " + Clicker.getPassiveClickInfo()[0].getCount() + "<br/> Price: " + Clicker.getPassiveClickInfo()[0].getPrice() + "</html>"); // well trained nekos dedicated to getting you those clicks!
+	private JButton clickCoinMinerButton = new JButton("<html>Click-Coin Miner | Count: " + Clicker.getPassiveClickInfo()[1].getCount() + "<br/> Price: " + Clicker.getPassiveClickInfo()[1].getPrice() + "</html>"); // bitcoin? no, clickcoin is the best new cryptocurrency!
+	private JButton clickIncButton = new JButton("<html>Click Incorporated® | Count: " + Clicker.getPassiveClickInfo()[2].getCount() + "<br/> Price: " + Clicker.getPassiveClickInfo()[2].getPrice() + "</html>"); // you're leading the corporate clicking industry!
+	private JButton clickMutantsButton = new JButton("<html>Click Mutants | Count: " + Clicker.getPassiveClickInfo()[3].getCount() + "<br/> Price: " + Clicker.getPassiveClickInfo()[3].getPrice() + "</html>"); // clicking has become more important than life itself. people offer themselves
 																 // 	to gain click collecting super powers.
 
 	// exit button
@@ -51,19 +52,27 @@ public class MarketScreen {
 		centerPanel.setLayout(new GridLayout(5, 2));
 		centerPanel.add(clickPowerHeader);
 		centerPanel.add(clickPassiveIncomeHeader);
-		centerPanel.add(clickCert);
-		centerPanel.add(clickCat);
-		centerPanel.add(clickBS);
-		centerPanel.add(clickCoinMiner);
-		centerPanel.add(clickMS);
-		centerPanel.add(clickInc);
-		centerPanel.add(clickPHD);
-		centerPanel.add(clickMutants);
+		centerPanel.add(clickCertButton);
+		centerPanel.add(clickCatButton);
+		centerPanel.add(clickBSButton);
+		centerPanel.add(clickCoinMinerButton);
+		centerPanel.add(clickMSButton);
+		centerPanel.add(clickIncButton);
+		centerPanel.add(clickPHDButton);
+		centerPanel.add(clickMutantsButton);
 		cp.add(BorderLayout.CENTER, centerPanel);
 
 		JPanel southPanel = new JPanel(); // panel for return to game button
 		southPanel.add(returnButton);
-		cp.add(southPanel);
+		cp.add(BorderLayout.SOUTH, southPanel);
+
+		/**** Action Listeners Below****/
+		MarketClickListener marketClickListener = new MarketClickListener(this);
+
+		clickCertButton.addActionListener(marketClickListener);
+		clickBSButton.addActionListener(marketClickListener);
+		clickMSButton.addActionListener(marketClickListener);
+		clickPHDButton.addActionListener(marketClickListener);
 
 		returnButton.addActionListener(e -> {
 			window.getContentPane().removeAll();
@@ -73,6 +82,42 @@ public class MarketScreen {
 			window.revalidate();
 		});
 
+	}
+
+	public JButton getClickCertButton() {
+		return clickCertButton;
+	}
+
+	public JButton getClickBSButton() {
+		return clickBSButton;
+	}
+
+	public JButton getClickMSButton() {
+		return clickMSButton;
+	}
+
+	public JButton getClickPHDButton() {
+		return clickPHDButton;
+	}
+
+	public JButton getClickCatButton() {
+		return clickCatButton;
+	}
+
+	public JButton getClickCoinMinerButton() {
+		return clickCoinMinerButton;
+	}
+
+	public JButton getClickIncButton() {
+		return clickIncButton;
+	}
+
+	public JButton getClickMutantsButton() {
+		return clickMutantsButton;
+	}
+
+	public Clicker getClicker() {
+		return clicker;
 	}
 
 
