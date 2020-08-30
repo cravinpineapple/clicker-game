@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import view.ClickerSimulator;
 import view.MenuScreen;
+import view.MarketScreen;
 
 public class ButtonClickListener implements ActionListener {
 
@@ -28,6 +29,13 @@ public class ButtonClickListener implements ActionListener {
 		else if (button == panel.getClickButton()) {
 			panel.getClicker().clicked(); // adds +1 to click count & adds to wallet and walletTotal.
 			panel.getWalletText().setText("Wallet: " + panel.getClicker().getWallet()); // updates wallet with new money amount
+		}
+		else if (button == panel.getMarketButton()) {
+			panel.getWindow().getContentPane().removeAll();
+			var marketScreen = new MarketScreen(panel.getWindow(), panel.getClicker()); // passes clicker too to keep data
+			marketScreen.init();
+			panel.getWindow().pack();
+			panel.getWindow().revalidate();
 		}
 	}
 	

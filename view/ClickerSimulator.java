@@ -3,14 +3,12 @@ package view;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
-import java.awt.GridLayout;
 import java.awt.Component;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import javax.swing.BoxLayout;
 import javax.swing.Box;
 
 import model.Clicker;
@@ -26,11 +24,18 @@ public class ClickerSimulator {
 	JButton statsButton = new JButton("Click Stats"); // button to view stats
 	JButton exitButton = new JButton("Exit");
 	Component spacer = Box.createRigidArea(new Dimension(15, 0));
-	Clicker clicker = new Clicker(); // creates clicker class for functionality
+	Clicker clicker; // creates clicker class for functionality
 	JLabel walletText = new JLabel();
 
 	public ClickerSimulator(JFrame window) {
 		this.window = window;
+		clicker = new Clicker();
+	}
+
+	// overloaded constructor to pass clicker information
+	public ClickerSimulator(JFrame window, Clicker clicker) {
+		this.window = window;
+		this.clicker = clicker;
 	}
 
 	public void init() {
@@ -61,6 +66,7 @@ public class ClickerSimulator {
 		ButtonClickListener buttonClickListener = new ButtonClickListener(this);
 		exitButton.addActionListener(buttonClickListener);
 		clickButton.addActionListener(buttonClickListener);
+		marketButton.addActionListener(buttonClickListener);
 
 	}
 
