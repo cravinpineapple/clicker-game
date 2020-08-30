@@ -14,6 +14,7 @@ import javax.swing.BoxLayout;
 import javax.swing.Box;
 
 import model.Clicker;
+import control.ButtonClickListener;
 
 public class ClickerSimulator {
 
@@ -25,19 +26,19 @@ public class ClickerSimulator {
 	JButton statsButton = new JButton("Click Stats"); // button to view stats
 	JButton exitButton = new JButton("Exit");
 	Component spacer = Box.createRigidArea(new Dimension(15, 0));
+	Clicker clicker = new Clicker(); // creates clicker class for functionality
+	JLabel walletText = new JLabel();
 
 	public ClickerSimulator(JFrame window) {
 		this.window = window;
 	}
 
 	public void init() {
-		Clicker clicker = new Clicker(); // creates clicker class for functionality
 		Container cp = window.getContentPane();
 		
 		JPanel northPanel = new JPanel(); // north panel for click $
-		JLabel walletAmount = new JLabel();
-		walletAmount.setText("Wallet " + clicker.getWallet());
-		northPanel.add(walletAmount);
+		walletText.setText("Wallet: " + clicker.getWallet());
+		northPanel.add(walletText);
 		cp.add(BorderLayout.NORTH, northPanel);
 
 		JPanel centerPanel = new JPanel(); // center panel for click button
@@ -55,7 +56,15 @@ public class ClickerSimulator {
 		southPanel.add(exitButton);
 		//southPanel.add(spacer);      // **********************
 		cp.add(BorderLayout.SOUTH, southPanel);
+
+		/* ****** Action Listeners Below ****** */
+		ButtonClickListener buttonClickListener = new ButtonClickListener(this);
+		exitButton.addActionListener(buttonClickListener);
+		clickButton.addActionListener(buttonClickListener);
+
 	}
+
+	/***** Getters Below *****/
 
 	public JButton getClickButton() {
 		return clickButton;
@@ -75,6 +84,14 @@ public class ClickerSimulator {
 
 	public JFrame getWindow() {
 		return window;
+	}
+	
+	public Clicker getClicker() {
+		return clicker;
+	}
+
+	public JLabel getWalletText() {
+		return walletText;
 	}
 
 }
