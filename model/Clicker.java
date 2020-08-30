@@ -7,14 +7,16 @@ public class Clicker {
 	private int totalClicks = 0; // total amount of times clicked
 	private double multiplier = 0; // for passive click income
 	private int clickPower = 1; // how many click $ per 
+
+	//private int 
 	
-	void clicked() {
+	public void clicked() {
 		totalClicks++;
 		wallet += clickPower;
 		walletTotal += clickPower;
 	}
 
-	void increaseMultiplier(double multIncrease) {
+	public void increaseMultiplier(double multIncrease) {
 		multiplier += multIncrease;
 	}
 	
