@@ -90,34 +90,35 @@ public class Clicker {
 		passiveClickInfo[3].setPrice(5000);
 	}
 
-	public boolean getHasPower(int index) {
-		switch (index) {
-			case 0:
-				return hasCert;
-			case 1:
-				return hasBS;
-			case 2:
-				return hasMS;
-			case 3:
-				return hasPHD;
-			default:
-				return false;
-		}
+	public boolean getHasCert() {
+		return hasCert;
 	}
 
-	public void setHasPower(int index, boolean value) {
-		switch (index) {
-			case 0:
-				hasCert = value;
-			case 1:
-				hasBS = value;
-			case 2:
-				hasMS = value;
-			case 3:
-				hasPHD = value;
-		}
+	public boolean getHasBS() {
+		return hasBS;
 	}
 
+	public boolean getHasMS() {
+		return hasMS;
+	}
 
-	
+	public boolean getHasPHD() {
+		return hasPHD;
+	}
+
+	public void setHasCert(boolean value) {
+		hasCert = value;
+	}
+
+	public void setHasBS(boolean value) {
+		hasBS = value;
+	}
+
+	public void setHasMS(boolean value) {
+		hasMS = value;
+	}
+
+	public void setHasPHD(boolean value) {
+		hasPHD = value;
+	}	
 }
