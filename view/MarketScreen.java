@@ -43,6 +43,19 @@ public class MarketScreen {
 	public MarketScreen(JFrame window, Clicker clicker) {
 		this.window = window;
 		this.clicker = clicker;
+
+		if (clicker.getHasCert()) {
+			clickCertButton.setEnabled(false);
+		}
+		if (clicker.getHasBS()) {
+			clickBSButton.setEnabled(false);
+		}
+		if (clicker.getHasMS()) {
+			clickMSButton.setEnabled(false);
+		}
+		if (clicker.getHasPHD()) {
+			clickPHDButton.setEnabled(false);
+		}
 	}
 
 	public void init() {
