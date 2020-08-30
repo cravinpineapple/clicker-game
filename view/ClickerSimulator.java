@@ -30,6 +30,7 @@ public class ClickerSimulator {
 	public ClickerSimulator(JFrame window) {
 		this.window = window;
 		clicker = new Clicker();
+		clicker.initPassiveClickInfo(); // intializes clickerPassive info array
 	}
 
 	// overloaded constructor to pass clicker information
