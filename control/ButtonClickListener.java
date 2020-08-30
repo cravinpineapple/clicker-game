@@ -25,6 +25,10 @@ public class ButtonClickListener implements ActionListener {
 			panel.getWindow().pack();
 			panel.getWindow().revalidate();
 		}
+		else if (button == panel.getClickButton()) {
+			panel.getClicker().clicked(); // adds +1 to click count & adds to wallet and walletTotal.
+			panel.getWalletText().setText("Wallet: " + panel.getClicker().getWallet()); // updates wallet with new money amount
+		}
 	}
 	
 }
