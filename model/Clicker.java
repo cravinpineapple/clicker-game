@@ -22,23 +22,23 @@ public class Clicker {
 		clickPower += powerIncrease;
 	}
 
-	double getWallet() {
+	public double getWallet() {
 		return wallet;
 	}
 
-	double getWalletTotal() {
+	public double getWalletTotal() {
 		return walletTotal;
 	}
 
-	int getTotalClicks() {
+	public int getTotalClicks() {
 		return totalClicks;
 	}
 
-	double getMultiplier() {
+	public double getMultiplier() {
 		return multiplier;
 	}
 
-	int getClickPower() {
+	public int getClickPower() {
 		return clickPower;
 	}
 	
