@@ -59,6 +59,10 @@ public class Clicker {
 		wallet -= subtAmount;
 	}
 
+	public void addWallet(double addAmount) {
+		wallet += addAmount;
+	}
+
 	public double getWalletTotal() {
 		return walletTotal;
 	}
