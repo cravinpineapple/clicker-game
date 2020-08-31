@@ -4,9 +4,11 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.BorderLayout;
 import java.awt.Component;
+import java.awt.GridLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.Box;
@@ -26,6 +28,7 @@ public class ClickerSimulator {
 	Component spacer = Box.createRigidArea(new Dimension(15, 0));
 	Clicker clicker; // creates clicker class for functionality
 	JLabel walletText = new JLabel();
+	JLabel clickPerSec = new JLabel("", SwingConstants.CENTER);
 	
 
 	public ClickerSimulator(JFrame window) {
@@ -45,12 +48,17 @@ public class ClickerSimulator {
 		
 		JPanel northPanel = new JPanel(); // north panel for click $
 		walletText.setText("Wallet: " + clicker.getWallet());
+		clickPerSec.setText("Clicks per Second: " + clicker.getMultiplier());
+		//northPanel.setLayout(new GridLayout(2, 1));
 		northPanel.add(walletText);
+		//northPanel.add(clickPerSec);
 		cp.add(BorderLayout.NORTH, northPanel);
 
 		JPanel centerPanel = new JPanel(); // center panel for click button
 		//clickButton.setSize(new Dimension(70, 30));
+		centerPanel.setLayout(new GridLayout(2, 1));
 		centerPanel.add(clickButton);
+		centerPanel.add(clickPerSec);
 		cp.add(BorderLayout.CENTER, centerPanel);
 
 		JPanel southPanel = new JPanel(); // for click market, stats, settings, and button spacers
