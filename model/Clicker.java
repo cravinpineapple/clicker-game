@@ -75,6 +75,8 @@ public class Clicker {
 				totalClickMutantEarned += passiveClickInfo[3].getCount() * 100;
 				clickSim.getWalletText().setText("Wallet: " + walletRounded);
 
+				walletTotal += (passiveClickInfo[0].getCount() * 0.1) + (passiveClickInfo[1].getCount() * 1) + (passiveClickInfo[2].getCount() * 10) + (passiveClickInfo[3].getCount() * 100);
+
 				if (marketScreen != null)
 					marketScreen.getWalletText().setText("Wallet: " + walletRounded);
 			}
