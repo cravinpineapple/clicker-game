@@ -86,6 +86,10 @@ public class MarketScreen {
 		clickBSButton.addActionListener(marketClickListener);
 		clickMSButton.addActionListener(marketClickListener);
 		clickPHDButton.addActionListener(marketClickListener);
+		clickCatButton.addActionListener(marketClickListener);
+		clickCoinMinerButton.addActionListener(marketClickListener);
+		clickIncButton.addActionListener(marketClickListener);
+		clickMutantsButton.addActionListener(marketClickListener);
 
 		returnButton.addActionListener(e -> {
 			window.getContentPane().removeAll();
