@@ -29,7 +29,7 @@ public class ClickerSimulator {
 	Clicker clicker; // creates clicker class for functionality
 	JLabel walletText = new JLabel();
 	JLabel clickPerSec = new JLabel("", SwingConstants.CENTER);
-	
+
 
 	public ClickerSimulator(JFrame window) {
 		this.window = window;
@@ -45,10 +45,12 @@ public class ClickerSimulator {
 
 	public void init() {
 		Container cp = window.getContentPane();
-		
+
+		clicker.init(this);
+
 		JPanel northPanel = new JPanel(); // north panel for click $
 		walletText.setText("Wallet: " + clicker.getWallet());
-		clickPerSec.setText("Clicks per Second: " + clicker.getMultiplier());
+		clickPerSec.setText("Clicks per Second: " + clicker.getCPS());
 		//northPanel.setLayout(new GridLayout(2, 1));
 		northPanel.add(walletText);
 		//northPanel.add(clickPerSec);
@@ -77,8 +79,8 @@ public class ClickerSimulator {
 		exitButton.addActionListener(buttonClickListener);
 		clickButton.addActionListener(buttonClickListener);
 		marketButton.addActionListener(buttonClickListener);
-
 	}
+	
 
 	/***** Getters Below *****/
 
@@ -108,6 +110,10 @@ public class ClickerSimulator {
 
 	public JLabel getWalletText() {
 		return walletText;
+	}
+
+	public void updateWalletText() {
+		walletText.setText("Wallet: " + clicker.getWallet());
 	}
 
 }
