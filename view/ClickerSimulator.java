@@ -79,6 +79,7 @@ public class ClickerSimulator {
 		exitButton.addActionListener(buttonClickListener);
 		clickButton.addActionListener(buttonClickListener);
 		marketButton.addActionListener(buttonClickListener);
+		statsButton.addActionListener(buttonClickListener);
 	}
 	
 
