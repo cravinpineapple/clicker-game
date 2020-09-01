@@ -1,5 +1,12 @@
 package model;
 
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import javax.swing.Timer;
+
+import view.ClickerSimulator;
+
 public class Clicker {
 
 	public class PassiveClicks {
@@ -20,31 +27,62 @@ public class Clicker {
 
 		public void purchased() {
 			count++;
-			price = price * count;
+			price *= count;
 		}
 	}
 
 	private double wallet = 0;	// current amount of click $
 	private double walletTotal = 0; // all time click $ gained
 	private int totalClicks = 0; // total amount of times clicked
-	private double multiplier = 0; // for passive click income
+	//private double multiplier = 0; // for passive click income
 	private int clickPower = 1; // how many click $ per 
 
-	static PassiveClicks[] passiveClickInfo = new PassiveClicks[4]; // tracks passiveClick price & count
+	public static PassiveClicks[] passiveClickInfo = new PassiveClicks[4]; // tracks passiveClick price & count
 
 	private boolean hasCert = false;
 	private boolean hasBS = false;
 	private boolean hasMS = false;
 	private boolean hasPHD = false;
+
+	//clickSim to update wallet text within timer
+	ClickerSimulator clickSim;
+
+	// variables for cps
+	double clicksPerSecond = 0;
+	Timer timer;
+
+	// increases CPS whenever item purchased
+	public void updateTimer(double cpsIncrease) {
+		clicksPerSecond += cpsIncrease;
+	}
+
+	public void setTimer() {
+		timer = new Timer(1000, new ActionListener() { // 1000 milliseconds (1 second)
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				addWallet(clicksPerSecond);	
+				System.out.println("test1");
+				clickSim.getWalletText().setText("Wallet: " + wallet);
+				System.out.println("test2");
+			}
+		}); 
+	}
 	
+	public void init(ClickerSimulator clickSim) {
+		this.clickSim = clickSim;
+		setTimer();
+		System.out.println("test!");
+	}
+
 	public void clicked() {
 		totalClicks++;
 		wallet += clickPower;
 		walletTotal += clickPower;
 	}
 
-	public void increaseMultiplier(double multIncrease) {
-		multiplier += multIncrease;
+	public void increaseCPS(double multIncrease) {
+		clicksPerSecond += multIncrease;
 	}
 	
 	public void increaseClickPower(int powerIncrease) {
@@ -71,8 +109,8 @@ public class Clicker {
 		return totalClicks;
 	}
 
-	public double getMultiplier() {
-		return multiplier;
+	public double getCPS() {
+		return clicksPerSecond;
 	}
 
 	public int getClickPower() {
@@ -125,4 +163,8 @@ public class Clicker {
 	public void setHasPHD(boolean value) {
 		hasPHD = value;
 	}	
+
+	public void setClickSim(ClickerSimulator clickSim) {
+		this.clickSim = clickSim;
+	}
 }
