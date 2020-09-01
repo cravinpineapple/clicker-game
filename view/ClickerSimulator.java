@@ -33,7 +33,7 @@ public class ClickerSimulator {
 
 	public ClickerSimulator(JFrame window) {
 		this.window = window;
-		clicker = new Clicker();
+		clicker = new Clicker(this);
 		clicker.initPassiveClickInfo(); // intializes clickerPassive info array
 	}
 
@@ -46,7 +46,7 @@ public class ClickerSimulator {
 	public void init() {
 		Container cp = window.getContentPane();
 
-		clicker.init(this);
+		clicker.setClickSim(this);
 
 		JPanel northPanel = new JPanel(); // north panel for click $
 		walletText.setText("Wallet: " + clicker.getWallet());
