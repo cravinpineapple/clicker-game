@@ -49,8 +49,8 @@ public class ClickerSimulator {
 		clicker.setClickSim(this);
 
 		JPanel northPanel = new JPanel(); // north panel for click $
-		walletText.setText("Wallet: " + clicker.getWallet());
-		clickPerSec.setText("Clicks per Second: " + clicker.getCPS());
+		walletText.setText("Wallet: " + (double) (Math.round(clicker.getWallet() * 10) / 10.0));
+		clickPerSec.setText("Clicks per Second: " + (double) (Math.round(clicker.getCPS() * 10) / 10.0));
 		//northPanel.setLayout(new GridLayout(2, 1));
 		northPanel.add(walletText);
 		//northPanel.add(clickPerSec);
@@ -111,10 +111,6 @@ public class ClickerSimulator {
 
 	public JLabel getWalletText() {
 		return walletText;
-	}
-
-	public void updateWalletText() {
-		walletText.setText("Wallet: " + clicker.getWallet());
 	}
 
 }
