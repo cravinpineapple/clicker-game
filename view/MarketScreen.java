@@ -19,8 +19,8 @@ public class MarketScreen {
 	private Clicker clicker;
 
 	/* text headers */
-	private JLabel clickPowerHeader = new JLabel("   Active Click Income");
-	private JLabel clickPassiveIncomeHeader = new JLabel("    Passive Click Income");
+	private JLabel clickPowerHeader = new JLabel("Active Click Income");
+	private JLabel clickPassiveIncomeHeader = new JLabel("Passive Click Income");
 
 	/** click power items **/
 	private JButton clickCertButton = new JButton("<html>Clicking Certification<br/>Price: 30</html>");
