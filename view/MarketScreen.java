@@ -19,14 +19,15 @@ public class MarketScreen {
 	private Clicker clicker;
 
 	/* text headers */
-	private JLabel clickPowerHeader = new JLabel("Active Click Income");
-	private JLabel clickPassiveIncomeHeader = new JLabel("Passive Click Income");
+	private JLabel clickPowerHeader = new JLabel("                     Active Click Income");
+	private JLabel clickPassiveIncomeHeader = new JLabel("                   Passive Click Income");
+	private JLabel walletText = new JLabel();
 
 	/** click power items **/
-	private JButton clickCertButton = new JButton("<html>Clicking Certification<br/>Price: 30</html>");
-	private JButton clickBSButton = new JButton("<html>B.S. of Clicking<br/>Price: 500</html>");
-	private JButton clickMSButton = new JButton("<html>M.S. of Clicking<br/>Price: 5000</html>");
-	private JButton clickPHDButton = new JButton("<html>Ph.D. of Clicking<br/>Price: 10000</html>");
+	private JButton clickCertButton = new JButton("<html>Clicking Certification<br/>Price: 100</html>");
+	private JButton clickBSButton = new JButton("<html>B.S. of Clicking<br/>Price: 1000</html>");
+	private JButton clickMSButton = new JButton("<html>M.S. of Clicking<br/>Price: 10000</html>");
+	private JButton clickPHDButton = new JButton("<html>Ph.D. of Clicking<br/>Price: 50000</html>");
 
 	/*** auto click items  ***/
 	private JButton clickCatButton = new JButton("<html>Click Cat | Count: " + Clicker.getPassiveClickInfo()[0].getCount() + "<br/> Price: " + Clicker.getPassiveClickInfo()[0].getPrice() + "</html>"); // well trained nekos dedicated to getting you those clicks!
@@ -44,13 +45,13 @@ public class MarketScreen {
 		this.window = window;
 		this.clicker = clicker;
 
-		if (clicker.getHasCert()) {
+		if (clicker.getHasCert() || clicker.getHasBS() || clicker.getHasMS() || clicker.getHasPHD()) {
 			clickCertButton.setEnabled(false);
 		}
-		if (clicker.getHasBS()) {
+		if (clicker.getHasBS() || clicker.getHasMS() || clicker.getHasPHD()) {
 			clickBSButton.setEnabled(false);
 		}
-		if (clicker.getHasMS()) {
+		if (clicker.getHasMS() || clicker.getHasPHD()) {
 			clickMSButton.setEnabled(false);
 		}
 		if (clicker.getHasPHD()) {
@@ -60,6 +61,14 @@ public class MarketScreen {
 
 	public void init() {
 		Container cp = window.getContentPane();
+
+		clicker.updateMarketScreen(this);
+
+		JPanel northPanel = new JPanel();
+		walletText.setText("Wallet: " + (double) (Math.round(clicker.getWallet() * 10) / 10.0));
+		northPanel.add(walletText);
+		cp.add(BorderLayout.NORTH, northPanel);
+
 
 		JPanel centerPanel = new JPanel(); // panel for all shop bottons
 		centerPanel.setLayout(new GridLayout(5, 2));
@@ -131,6 +140,10 @@ public class MarketScreen {
 
 	public JButton getClickMutantsButton() {
 		return clickMutantsButton;
+	}
+
+	public JLabel getWalletText() {
+		return walletText;
 	}
 
 	public Clicker getClicker() {
