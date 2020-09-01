@@ -34,6 +34,10 @@ public class Clicker {
 	private double wallet = 0;	// current amount of click $
 	private double walletTotal = 0; // all time click $ gained
 	private int totalClicks = 0; // total amount of times clicked
+	private double totalCatClicksEarned = 0;
+	private double totalClickCoinMinerEarned = 0;
+	private double totalClickIncEarned = 0;
+	private double totalClickMutantEarned = 0;
 	//private double multiplier = 0; // for passive click income
 	private int clickPower = 1; // how many click $ per 
 
@@ -61,8 +65,13 @@ public class Clicker {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				addWallet(clicksPerSecond);	
-				clickSim.getWalletText().setText("Wallet: " + wallet);
+				double walletRounded = Math.round(wallet * 10) / 10.0;
+				addWallet(clicksPerSecond);
+				totalCatClicksEarned += passiveClickInfo[0].getCount() * 0.1;
+				totalClickCoinMinerEarned += passiveClickInfo[1].getCount() * 1;
+				totalClickIncEarned += passiveClickInfo[2].getCount() * 10;
+				totalClickMutantEarned += passiveClickInfo[3].getCount() * 100;
+				clickSim.getWalletText().setText("Wallet: " + walletRounded);
 			}
 		}); 
 	}
@@ -164,5 +173,21 @@ public class Clicker {
 
 	public void setClickSim(ClickerSimulator clickSim) {
 		this.clickSim = clickSim;
+	}
+
+	public double getTotalCatClicksEarned() {
+		return totalCatClicksEarned;
+	}
+
+	public double getTotalClickCoinMinerEarned() {
+		return totalClickCoinMinerEarned;
+	}
+
+	public double getTotalClickIncEarned() {
+		return totalClickIncEarned;
+	}
+
+	public double getTotalClickMutantEarned() {
+		return totalClickMutantEarned;
 	}
 }
