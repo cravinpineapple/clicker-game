@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.Timer;
 
 import view.ClickerSimulator;
+import view.MarketScreen;
 
 public class Clicker {
 
@@ -27,7 +28,7 @@ public class Clicker {
 
 		public void purchased() {
 			count++;
-			price *= (count + 1);
+			price = Math.round((price * 1.25) * 10) / 10.0;
 		}
 	}
 
@@ -50,6 +51,7 @@ public class Clicker {
 
 	//clickSim to update wallet text within timer
 	ClickerSimulator clickSim;
+	MarketScreen marketScreen;
 
 	// variables for cps
 	double clicksPerSecond = 0;
@@ -72,6 +74,9 @@ public class Clicker {
 				totalClickIncEarned += passiveClickInfo[2].getCount() * 10;
 				totalClickMutantEarned += passiveClickInfo[3].getCount() * 100;
 				clickSim.getWalletText().setText("Wallet: " + walletRounded);
+
+				if (marketScreen != null)
+					marketScreen.getWalletText().setText("Wallet: " + walletRounded);
 			}
 		}); 
 	}
@@ -80,6 +85,10 @@ public class Clicker {
 		this.clickSim = clickSim;
 		setTimer();
 		timer.start();
+	}
+
+	public void updateMarketScreen(MarketScreen marketScreen) {
+		this.marketScreen = marketScreen;
 	}
 
 	public void clicked() {
@@ -92,8 +101,11 @@ public class Clicker {
 		clicksPerSecond += multIncrease;
 	}
 	
-	public void increaseClickPower(int powerIncrease) {
-		clickPower += powerIncrease;
+	public void setClickPower(int powerIncrease) {
+		if (powerIncrease < clickPower)
+			return;
+
+		clickPower = powerIncrease;
 	}
 
 	public double getWallet() {
@@ -133,10 +145,10 @@ public class Clicker {
 		for (int i = 0; i < 4; i++) 
 			passiveClickInfo[i] = new PassiveClicks();
 		
-		passiveClickInfo[0].setPrice(30);
-		passiveClickInfo[1].setPrice(500);
-		passiveClickInfo[2].setPrice(1000);
-		passiveClickInfo[3].setPrice(5000);
+		passiveClickInfo[0].setPrice(1);
+		passiveClickInfo[1].setPrice(10);
+		passiveClickInfo[2].setPrice(50);
+		passiveClickInfo[3].setPrice(100);
 	}
 
 	public boolean getHasCert() {
