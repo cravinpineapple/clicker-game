@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import view.ClickerSimulator;
 import view.MenuScreen;
+import view.StatsScreen;
 import view.MarketScreen;
 
 public class ButtonClickListener implements ActionListener {
@@ -34,6 +35,13 @@ public class ButtonClickListener implements ActionListener {
 			panel.getWindow().getContentPane().removeAll();
 			var marketScreen = new MarketScreen(panel.getWindow(), panel.getClicker()); // passes clicker too to keep data
 			marketScreen.init();
+			panel.getWindow().pack();
+			panel.getWindow().revalidate();
+		}
+		else if (button == panel.getStatsButton()) {
+			panel.getWindow().getContentPane().removeAll();
+			var statsScreen = new StatsScreen(panel.getWindow(), panel.getClicker());
+			statsScreen.init();
 			panel.getWindow().pack();
 			panel.getWindow().revalidate();
 		}
