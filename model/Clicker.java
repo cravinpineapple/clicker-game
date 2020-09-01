@@ -27,7 +27,7 @@ public class Clicker {
 
 		public void purchased() {
 			count++;
-			price *= count;
+			price *= (count + 1);
 		}
 	}
 
@@ -62,17 +62,15 @@ public class Clicker {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				addWallet(clicksPerSecond);	
-				System.out.println("test1");
 				clickSim.getWalletText().setText("Wallet: " + wallet);
-				System.out.println("test2");
 			}
 		}); 
 	}
 	
-	public void init(ClickerSimulator clickSim) {
+	public Clicker(ClickerSimulator clickSim) {
 		this.clickSim = clickSim;
 		setTimer();
-		System.out.println("test!");
+		timer.start();
 	}
 
 	public void clicked() {
