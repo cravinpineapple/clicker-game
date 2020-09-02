@@ -69,7 +69,7 @@ public class Clicker {
 			public void actionPerformed(ActionEvent e) {
 				double walletRounded = Math.round(wallet * 10) / 10.0;
 				addWallet(clicksPerSecond);
-				if (passiveClickInfo[0].count != 0)
+				if (passiveClickInfo[0].count != 0) 
 					totalCatClicksEarned += 0.1;
 				if (passiveClickInfo[1].count != 0)
 					totalClickCoinMinerEarned += 1;
@@ -78,8 +78,6 @@ public class Clicker {
 				if (passiveClickInfo[3].count != 0)
 					totalClickMutantEarned += 20;
 				clickSim.getWalletText().setText("Wallet: " + walletRounded);
-
-				walletTotal += (passiveClickInfo[0].getCount() * 0.1) + (passiveClickInfo[1].getCount() * 1) + (passiveClickInfo[2].getCount() * 10) + (passiveClickInfo[3].getCount() * 100);
 
 				if (marketScreen != null)
 					marketScreen.getWalletText().setText("Wallet: " + walletRounded);
