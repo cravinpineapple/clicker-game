@@ -29,7 +29,7 @@ public class StatsScreen {
 		JLabel totalWalletEarned = new JLabel("<html>Total Money Earned:<br/>" + "[" + (double) (Math.round(clicker.getWalletTotal() * 10) / 10.0) + "]");
 		JLabel catMoneyEarned = new JLabel("<html>ClickCat Money Earned:<br/>" + "[" + (double) (Math.round(clicker.getTotalCatClicksEarned() * 10) / 10.0) + "]");
 		JLabel clickMinerEarned = new JLabel("<html>ClickCoinMiner<br/>Money Earned:<br/>" + "[" + (double) (Math.round(clicker.getTotalClickCoinMinerEarned() * 10) / 10.0) + "]");
-		JLabel clickIncEarned = new JLabel("<html>ClickInc Money Earned:<br/>" + "[" + (double) (Math.round(clicker.getTotalClickCoinMinerEarned() * 10) / 10.0) + "]");
+		JLabel clickIncEarned = new JLabel("<html>ClickInc Money Earned:<br/>" + "[" + (double) (Math.round(clicker.getTotalClickIncEarned() * 10) / 10.0) + "]");
 		JLabel clickMutantsEarned = new JLabel("<html>Click Mutants Earned:<br/>" + "[" + (double) (Math.round(clicker.getTotalClickMutantEarned() * 10) / 10.0) + "]");
 		centerPanel.setLayout(new GridLayout(2, 4));
 		centerPanel.add(timesClicked);
